@@ -1,22 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from "path"
-import autoprefixer from 'autoprefixer'
+import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+    plugins: [solidPlugin()],
+    server: {
+        port: 3000,
     },
-  },
-  css: {
-    postcss: {
-      plugins: [
-        // tailwindcss - processed via CLI
-        autoprefixer,
-      ],
+    build: {
+        target: 'esnext',
     },
-  },
-})
+});
